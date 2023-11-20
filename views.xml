@@ -7,5 +7,79 @@
 		<field name="res_model">cerveza.cerveza</field>
 		<field name="view_mode">tree,form</field>
 	</record>
+    <record id="lote_action" model="ir.actions.act_window">
+		<field name="name">Action Lote</field>
+		<field name="res_model">cerveza.lote</field>
+		<field name="view_mode">tree,form</field>
+	</record>
+    <record id="ingrediente_action" model="ir.actions.act_window">
+		<field name="name">Action Ingrediente</field>
+		<field name="res_model">cerveza.ingrediente</field>
+		<field name="view_mode">tree,form</field>
+	</record>
+    <record id="empaquetado_action" model="ir.actions.act_window">
+		<field name="name">Action Empaquetado</field>
+		<field name="res_model">cerveza.empaquetado</field>
+		<field name="view_mode">tree,form</field>
+	</record>
+    <record id="distribuidor_action" model="ir.actions.act_window">
+		<field name="name">Action Distribuidor</field>
+		<field name="res_model">cerveza.distribuidor</field>
+		<field name="view_mode">tree,form</field>
+	</record>
 
+    <!--Tree para Cerveza-->
+    <record id="view_cerveza_tree" model="ir.ui.view" >
+		<field name="name">cerveza.tree</field>
+		<field name="model">cerveza.cerveza</field>
+		<field name="arch" type="xml">
+			<tree>
+				<field name="name"/>
+				<field name="description"/>
+                <field name="alcohol_rate"/>
+                <field name="precio_unidad"/>
+                <field name="volume_per_unite"/>
+                <field name="available"/>
+                <field name="productionPack"/>
+                <field name="distributor_id"/>
+			</tree>
+		</field>
+	</record>
+
+
+<!-- MenuItems -->
+    <menuitem
+        id="cerveza.main_menu"
+        name="cerveza.main_menu"
+        sequence="10" />
+        <menuitem
+         id="cerveza" 
+         name="Cerveza" 
+         parent="cerveza.main_menu" 
+         action="cerveza_action"
+          sequence="10"/>
+        <menuitem
+         id="lote" 
+         name="Lote de Producción" 
+         parent="cerveza.main_menu" 
+         action="lote_action"
+          sequence="10"/>
+        <menuitem
+         id="ingrediente" 
+         name="Ingredientes" 
+         parent="ingrediente.main_menu" 
+         action="ingrediente_action"
+          sequence="10"/>
+        <menuitem
+         id="empaquetado" 
+         name="Empaquetado" 
+         parent="empaquetado.main_menu" 
+         action="empaquetado_action"
+          sequence="10"/>
+        <menuitem
+         id="distribuidor" 
+         name="Distribuidores" 
+         parent="distribuidor.main_menu" 
+         action="distribuidor_action"
+          sequence="10"/>
 </odoo>
