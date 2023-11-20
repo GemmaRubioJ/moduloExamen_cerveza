@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <!--Vistas-->
+    <record id="cerveza_action" model="ir.actions.act_window">
+		<field name="name">Action Cerveza</field>
+		<field name="res_model">cerveza.cerveza</field>
+		<field name="view_mode">tree,form</field>
+	</record>
+
+</odoo>
