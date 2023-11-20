@@ -97,7 +97,7 @@
                 <field name="name"/>
 				<field name="tipe"/>
                 <field name="available_quantity"/>
-				<field name="cerveza_id"/>
+				<field name="cerveza_id" widget="many2many_tags"/>
 			</tree>
 		</field>
 	</record>
