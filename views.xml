@@ -52,11 +52,12 @@
 		<field name="model">cerveza.cerveza</field>
 		<field name="arch" type="xml">
 			<search string="Buscar Cerveza">
-                <field name="alcohol_rate" string="Contenido de alcohol %"/>
-                <field name="precio_unidad" string="Precio por unidad"/>
                 <field name="volume_per_unite" string="Volumen alcohol (ml)"/>
                 <filter string="Disponible" name="disponible" domain="[('available','=',True)]"/>
                 <filter string="No Disponible" name="no_disponible" domain="[('available','=',False)]"/>
+                <filter string="Contenido de alcohol" name='alcohol_rate'/>
+                <filter string="Precio por unidad" name='precio_unidad'/>
+                <filter string="Volumen alcohol (ml)" name='volume_per_unite'/>
             </search>
 		</field>
 	</record>
@@ -170,7 +171,7 @@
     </record>
 
     <!--Form para INGREDIENTE-->
-    <record model="ir.ui.view" id="lote_form_view">
+    <record model="ir.ui.view" id="ingrediente_form_view">
         <field name="name">ingrediente.form</field>
         <field name="model">cerveza.ingrediente</field>
         <field name="arch" type="xml">
@@ -181,6 +182,40 @@
                         <field name="tipe"/>
                         <field name="available_quantity"/>
                         <field name="cerveza_id"/>
+                    </group>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+    <!--Form para EMPAQUETADO-->
+    <record model="ir.ui.view" id="empaquetado_form_view">
+        <field name="name">empaquetado.form</field>
+        <field name="model">cerveza.empaquetado</field>
+        <field name="arch" type="xml">
+            <form string="Empaquetados">
+                <sheet>
+                    <group>
+                        <field name="productionPack_id"/>
+                        <field name="packing_date"/>
+                        <field name="quantity"/>
+                    </group>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+    <!--Form para DISTRIBUIDOR-->
+    <record model="ir.ui.view" id="distribuidor_form_view">
+        <field name="name">distribuidor.form</field>
+        <field name="model">cerveza.distribuidor</field>
+        <field name="arch" type="xml">
+            <form string="Distribuidores">
+                <sheet>
+                    <group>
+                        <field name="name"/>
+                        <field name="phone"/>
+                        <field name="beers_supplied"/>
                     </group>
                 </sheet>
             </form>
