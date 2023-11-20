@@ -46,6 +46,21 @@
 		</field>
 	</record>
 
+    <!--add search view for CERVEZA-->
+	<record id="cerveza_search" model="ir.ui.view">
+		<field name="name">cerveza.search</field>
+		<field name="model">cerveza.cerveza</field>
+		<field name="arch" type="xml">
+			<search string="Buscar Cerveza">
+                <field name="alcohol_rate" string="Contenido de alcohol %"/>
+                <field name="precio_unidad" string="Precio por unidad"/>
+                <field name="volume_per_unite" string="Volumen alcohol (ml)"/>
+                <filter string="Disponible" name="disponible" domain="[('available','=',True)]"/>
+                <filter string="No Disponible" name="no_disponible" domain="[('available','=',False)]"/>
+            </search>
+		</field>
+	</record>
+
     <!--Tree para Lote Produccion-->
     <record id="view_lote_tree" model="ir.ui.view" >
 		<field name="name">lote.tree</field>
@@ -62,12 +77,23 @@
 		</field>
 	</record>
 
+     <record id="lote_calendar" model="ir.ui.view" >
+		<field name="name">field_value</field>
+		<field name="model">cerveza.lote</field>
+		<field name="arch" type="xml">
+			<calendar string="lotes" date_start="date_start" date_stop="date_end">
+				<field name="cerveza_id"/>
+			</calendar>
+		</field>
+	</record>
+
     <!--Tree para Ingrediente-->
     <record id="view_ingrediente_tree" model="ir.ui.view" >
 		<field name="name">ingrediente.tree</field>
 		<field name="model">cerveza.ingrediente</field>
 		<field name="arch" type="xml">
 			<tree>
+                <field name="name"/>
 				<field name="tipe"/>
                 <field name="available_quantity"/>
 				<field name="cerveza_id"/>
@@ -100,6 +126,67 @@
 			</tree>
 		</field>
 	</record>
+
+    <!--Form para CERVEZA-->
+    <record model="ir.ui.view" id="cerveza_form_view">
+        <field name="name">cerveza.form</field>
+        <field name="model">cerveza.cerveza</field>
+        <field name="arch" type="xml">
+            <form string="Cervezas">
+                <sheet>
+                    <group>
+                        <field name="name"/>
+                        <field name="description"/>
+                        <field name="alcohol_rate"/>
+                        <field name="volume_per_unite"/>
+                        <field name="precio_unidad"/>
+                        <field name="available"/>
+                        <field name="productionPack"/>
+                        <field name="distributor_id"/>
+                    </group>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+    <!--Form para LOTE PRODUCCION-->
+    <record model="ir.ui.view" id="lote_form_view">
+        <field name="name">lote.form</field>
+        <field name="model">cerveza.lote</field>
+        <field name="arch" type="xml">
+            <form string="Lotes de Producción">
+                <sheet>
+                    <group>
+                        <field name="cerveza_id"/>
+                        <field name="date_start"/>
+                        <field name="date_end"/>
+                        <field name="quantity"/>
+                        <field name="state"/>
+                        <field name="pack_id"/>
+                    </group>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+    <!--Form para INGREDIENTE-->
+    <record model="ir.ui.view" id="lote_form_view">
+        <field name="name">ingrediente.form</field>
+        <field name="model">cerveza.ingrediente</field>
+        <field name="arch" type="xml">
+            <form string="Ingredientes">
+                <sheet>
+                    <group>
+                        <field name="name"/>
+                        <field name="tipe"/>
+                        <field name="available_quantity"/>
+                        <field name="cerveza_id"/>
+                    </group>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
 
 
 
